@@ -14,6 +14,16 @@
 #   about_triangle_project_2.rb
 #
 def triangle(a, b, c)
+  if a <= 0 || b <= 0 || c <= 0
+    fail TriangleError, "Side lengths must be positive."
+  end
+
+  sides = [a,b,c].sort!
+
+  if sides[0] + sides[1] <= sides[2]
+    fail TriangleError, "Provided side lengths do not describe a valid triangle."
+  end
+
   if a == b || a == c
     if b == c
       return :equilateral
